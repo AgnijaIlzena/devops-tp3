@@ -35,17 +35,11 @@ app.get('/health', async (req, res) => {
 
 app.get('/products', async (req, res) => {
   try {
-    // const result = await pool.query(
-    //   'SELECT id, name, description, price_cents, stock FROM products ORDER BY id ASC'
-    // );
+    const result = await pool.query(
+      'SELECT id, name, description, price_cents, stock FROM products ORDER BY id ASC'
+    );
 
-    // res.json(result.rows);
-     throw new Error('Incident simulé : base de données indisponible');
-      const result = await pool.query(
-        'SELECT id, name, description, price_cents, stock FROM products ORDER BY id ASC'
-      );
-      res.json(result.rows);
-
+    res.json(result.rows);
   } catch (error) {
     res.status(500).json({
       error: 'Impossible de récupérer les produits',
@@ -53,7 +47,6 @@ app.get('/products', async (req, res) => {
     });
   }
 });
-
 
 app.get('/products/:id', async (req, res) => {
   try {
