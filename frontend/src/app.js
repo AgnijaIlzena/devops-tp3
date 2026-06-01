@@ -23,6 +23,7 @@ document.querySelector('#load-products').addEventListener('click', async () => {
 
     productsElement.innerHTML = products.map(product => `
       <article class="product">
+        <h5>Testing API</h5>
         <h3>${product.name}</h3>
         <p>${product.description}</p>
         <p class="price">${(product.price_cents / 100).toFixed(2)} €</p>
